@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>crud</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" />
+    <style>
+      table,
+      tr,
+      td,
+      th {
+        border: 1px solid black;
+        padding: 10px;
+      }
+      .btn,
+      a {
+        background-color: rgb(37, 16, 231);
+        color: white;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <table>
+        <tr>
+          <th>S.no</th>
+          <th>Candidate Name</th>
+          <th>Contact</th>
+          <th>Update/Delete</th>
+          <th>Details</th>
+        </tr>
+
+        {% for data in candidates %}
+        <tr>
+          <th>{{forloop.counter}}</th>
+
+          <th>{{data.first_name }} {{data.last_name}}</th>
+
+          <th>{{data.contact_no_primary }}</th>
+          <th>
+            <button class="btn">
+              <a href="/api/candidates/{{ data.id }}/"> Edit</a>
+            </button>
+          </th>
+          <th>
+            <button class="btn">
+              <a href="/api/candidateslist/"> Show</a>
+            </button>
+          </th>
+        </tr>
+        {% endfor %}
+        
+      </table>
+    </center>
+  </body>
+</html>
